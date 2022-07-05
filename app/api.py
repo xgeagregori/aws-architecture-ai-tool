@@ -1,11 +1,22 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from app import clean_text, generate_aws_services
 from diagram import generate_diagram
 from mangum import Mangum
 
 app = FastAPI()
 handler = Mangum(app)
+
+origins = ["http://localhost:3000", "http://localhost:8000"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 MAX_INPUT_LENGTH = 350
 

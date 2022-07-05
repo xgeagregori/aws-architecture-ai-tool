@@ -30,7 +30,7 @@ def generate_diagram(services_list: List[str]):
         nodes.append(Node)
 
     graph_attr = {
-        # "bgcolor": "transparent"
+        "bgcolor": "transparent"
     }
     with Diagram("", outformat="png", show=False, filename="/tmp/diagram", direction="TB", graph_attr=graph_attr):
         for index, Node in enumerate(nodes):
