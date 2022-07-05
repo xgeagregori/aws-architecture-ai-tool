@@ -1,14 +1,14 @@
 import os
 import openai
 import nltk.corpus
-nltk.download("stopwords")
+# nltk.download("stopwords")
 from nltk.corpus import stopwords
 
-MAX_INPUT_LENGTH = 250
+MAX_INPUT_LENGTH = 350
 
 def main():
     prompt = "I want to build a big data app. It will survey users from our website and store their data. It will transform and organize our data. It will store the transformed data. It will query the datasets. It will use a data lake. It will analyze data using machine learning. It will produce charts."
-    clean_prompt = "App keywords: " + clean_text(prompt)
+    clean_prompt = clean_text(prompt)
 
     if validate_length(clean_prompt):
         generate_aws_services(clean_prompt)
@@ -40,7 +40,7 @@ def generate_aws_services(prompt: str) -> str:
     presence_penalty=0
     )
 
-    return response.choices[0].text
+    return response.choices[0].text.strip()
 
 if __name__ == "__main__":
     main()

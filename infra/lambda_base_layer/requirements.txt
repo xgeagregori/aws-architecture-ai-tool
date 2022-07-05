@@ -1,0 +1,6 @@
+fastapi
+mangum
+openai
+diagrams
+nltk
+graphviz
